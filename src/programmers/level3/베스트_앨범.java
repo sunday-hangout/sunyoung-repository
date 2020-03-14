@@ -40,20 +40,10 @@ public class 베스트_앨범 {
 
         List<String> genresList = new ArrayList<>(total.keySet());
 
-        Collections.sort(genresList, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return total.get(o2).compareTo(total.get(o1));
-            }
-        });
+        Collections.sort(genresList, (o1, o2) -> total.get(o2).compareTo(total.get(o1)));
 
         // 2. 장르별 노래 play 순서대로 정렬
-        Comparator<Song> songComparator = new Comparator<Song>() {
-            @Override
-            public int compare(Song o1, Song o2) {
-                return o2.play - o1.play;
-            }
-        };
+        Comparator<Song> songComparator = (o1, o2) -> o2.play - o1.play;
 
         for(String key : genresList){
             genresMap.get(key).sort(songComparator);
