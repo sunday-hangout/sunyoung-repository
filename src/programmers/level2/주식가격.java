@@ -20,7 +20,7 @@ public class 주식가격 {
                     answer[i] = count;
                     break;
                 }
-                else{ // 안떨어졌으면
+                else{ // 안 떨어졌으면
                     count++;
                 }
             }
