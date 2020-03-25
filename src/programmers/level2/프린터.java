@@ -5,54 +5,39 @@ package programmers.level2;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
+import java.util.PriorityQueue;
 
 public class 프린터 {
 
   public int solution(int[] priorities, int location) {
+    int answer = 1; // 순번이기 때문에 1번째부터 시작
 
-    List<Wait> result = new ArrayList<>();
-    List<Wait> wating = new ArrayList<>();
+    PriorityQueue priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
 
-    for (int i = 0; i < priorities.length; i++) {
-      Wait wait = new Wait();
-
-      wait.num = i;
-      wait.value = priorities[i];
-
-      wating.add(wait);
+    // 우선순위가 높은 순서대로 정렬
+    for(int task : priorities){
+      priorityQueue.add(task);
     }
 
-    while (!wating.isEmpty()) {
-      // 1. 인쇄 대기목록의 가장 앞에 있는 문서(J)를 대기목록에서 꺼냅니다.
-      int first = wating.get(0).value;
+    // priorities : { 2, 1, 3, 2 }
+    // priorityQueue : { 3, 2, 2, 1 }
 
-      if (isBiggest(first, wating)) {  // 3. 그렇지 않으면 J를 인쇄합니다.
-        if (wating.get(0).num == location) {     // 원하는 고유값에 해당하는 값 찾기
-          return result.size() + 1;
+    while(!priorityQueue.isEmpty()){
+      for(int i=0; i<priorities.length; i++){
+        if(priorities[i] == (int)priorityQueue.peek()) { // 배열의 값과 큐의 맨 위에 있는 값이 같고
+          if(i == location){ // 원하는 위치(location)과 i(위치)가 같으면
+            return answer;
+          }
+          priorityQueue.poll(); // 큐 제거
+          answer++;
         }
-        wating.remove(0);
-        result.add(wating.get(0));
-      } else { // 2. 나머지 인쇄 대기목록에서 J보다 중요도가 높은 문서가 한 개라도 존재하면 J를 대기목록의 가장 마지막에 넣습니다.
-        wating.add(wating.get(0));
-        wating.remove(0);
       }
     }
 
-    return 0;
+    return answer;
   }
 
-  private boolean isBiggest(int first, List<Wait> wating) {
-
-    for (Wait wait : wating) {
-      if (first < wait.value) {
-        return false;
-      }
-    }
-
-    return true;
-  }
 
 
   @Test
@@ -61,10 +46,4 @@ public class 프린터 {
     Assert.assertEquals(5, solution(new int[]{1, 1, 9, 1, 1, 1}, 0));
   }
 
-}
-
-class Wait {
-
-  public int num; // 고유번호
-  public int value; // 값
 }
