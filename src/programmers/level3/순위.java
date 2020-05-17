@@ -26,7 +26,7 @@ public class 순위 {
       players.get(result[1]).lose.add(result[0]); // 진 기록 추가
     }
 
-    for (int depth = 0; depth < 2; depth++) { // 한 번 더 depth가 한 번 더 들어갈 수 있기 때문에 두 번 반복하게 설정
+    for (int depth = 0; depth < n; depth++) { // 한 번 더 depth가 한 번 더 들어갈 수 있기 때문에 n번 반복하게 설정
       for (int i = 1; i <= n; i++) {
 
         Player player = players.get(i); // 현재 플레이어
@@ -48,7 +48,6 @@ public class 순위 {
           }
         }
         player.lose.addAll(loseSet); // 추가
-
       }
     }
 
