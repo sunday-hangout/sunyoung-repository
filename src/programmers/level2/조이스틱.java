@@ -24,7 +24,7 @@ public class 조이스틱 {
       answer += min[startAt];
       min[startAt] = 0;
 
-      if(EverythingIsZero(min)) {
+      if (everythingIsZero(min)) {
         break;
       }
 
@@ -73,10 +73,12 @@ public class 조이스틱 {
   }
 
   // 모든 요소가 0인지 검사하는 메소드
-  private boolean EverythingIsZero(int[] min) {
+  private boolean everythingIsZero(int[] min) {
 
     for (int i = 0; i < min.length; i++) {
-      if (min[i] != 0) return false;
+      if (min[i] != 0) {
+        return false;
+      }
     }
     return true;
   }

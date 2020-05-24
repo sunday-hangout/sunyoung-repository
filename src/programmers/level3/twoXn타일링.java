@@ -30,6 +30,4 @@ public class twoXn타일링 {
     Assert.assertEquals(8, solution(5));
     Assert.assertEquals(1, solution(1));
   }
-
-
 }
