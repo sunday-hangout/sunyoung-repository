@@ -7,11 +7,8 @@ import org.junit.Test;
 public class 멀쩡한_사각형 {
 
   public long solution(int w, int h) {
-    long wl = w;
-    long h1 = h;
-
-    int gcd = BigInteger.valueOf(wl).gcd(BigInteger.valueOf(h1)).intValue();
-    return Long.parseLong((wl * h1) - (((wl / gcd) + (h1 / gcd) - 1) * gcd) + "");
+    int gcd = BigInteger.valueOf(w).gcd(BigInteger.valueOf(h)).intValue();
+    return ((long) w * (long) h) - ((((long) w / gcd) + ((long) h / gcd) - 1) * gcd);
   }
 
   @Test
