@@ -1,4 +1,4 @@
-package level2;
+package programmers.level2;
 
 import java.math.BigInteger;
 import org.junit.Assert;
