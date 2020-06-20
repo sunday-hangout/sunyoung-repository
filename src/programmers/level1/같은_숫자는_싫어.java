@@ -20,7 +20,6 @@ public class 같은_숫자는_싫어 {
                 answer.add(arr[i]);
             }
         }
-
         return answer.stream().mapToInt(i->i).toArray();
     }
 
