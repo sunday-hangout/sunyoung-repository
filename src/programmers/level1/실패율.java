@@ -1,5 +1,7 @@
 package level1;
 
+// https://programmers.co.kr/learn/courses/30/lessons/42889
+
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Assert;
@@ -12,22 +14,22 @@ public class 실패율 {
     List<Stage> list = new ArrayList<>();
 
     for (int i = 1; i < N + 1; i++) {
-      int same = 0;
-      int more = 0;
+      int now = 0;
+      int clear = 0;
 
       for (int stage : stages) {
         if (i <= stage) {
-          more += 1;
+          clear += 1;
         }
         if (i == stage) {
-          same += 1;
+          now += 1;
         }
       }
 
-      if (more == 0) {
+      if (clear == 0) {
         list.add(new Stage(i, 0));
       } else {
-        list.add(new Stage(i, (double) same / more));
+        list.add(new Stage(i, (double) now / clear));
       }
     }
 
