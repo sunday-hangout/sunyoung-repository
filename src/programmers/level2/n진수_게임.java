@@ -1,4 +1,4 @@
-package level2;
+package programmers.level2;
 
 import org.junit.Assert;
 import org.junit.Test;

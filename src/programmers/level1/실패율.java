@@ -1,4 +1,4 @@
-package level1;
+package programmers.level1;
 
 // https://programmers.co.kr/learn/courses/30/lessons/42889
 
