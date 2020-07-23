@@ -60,6 +60,7 @@ public class 뉴스_클러스터링 {
   }
 
   @Test
+
   public void 정답() {
     Assert.assertEquals(16384, solution("FRANCE", "french"));
     Assert.assertEquals(65536, solution("handshake", "shake hands"));
