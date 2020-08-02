@@ -23,8 +23,6 @@ public class _123_더하기 {
       }
       System.out.println(output[n]);
     }
-
-
   }
 
 }
