@@ -9,10 +9,10 @@ public class ValidParentheses {
     Stack<Character> stack = new Stack<>();
 
     for (int i = 0; i < s.length(); i++) {
-      char x = s.charAt(i);
+      char chr = s.charAt(i);
 
-      if (x == '(' || x == '[' || x == '{') {
-        stack.push(x);
+      if (chr == '(' || chr == '[' || chr == '{') {
+        stack.push(chr);
         continue;
       }
 
@@ -20,24 +20,23 @@ public class ValidParentheses {
         return false;
       }
 
-      switch (x) {
+      Character pop = stack.pop();
+
+      switch (chr) {
         case ')':
-          if (stack.peek() != '(') {
+          if (pop != '(') {
             return false;
           }
-          stack.pop();
           break;
         case '}':
-          if (stack.peek() != '{') {
+          if (pop != '{') {
             return false;
           }
-          stack.pop();
           break;
         case ']':
-          if (stack.peek() != '[') {
+          if (pop != '[') {
             return false;
           }
-          stack.pop();
           break;
       }
     }
@@ -48,6 +47,7 @@ public class ValidParentheses {
 
   @Test
   public void 정답() {
+    Assert.assertEquals(false, isValid("())"));
     Assert.assertEquals(true, isValid("()"));
     Assert.assertEquals(true, isValid("()[]{}"));
     Assert.assertEquals(false, isValid("(]"));
